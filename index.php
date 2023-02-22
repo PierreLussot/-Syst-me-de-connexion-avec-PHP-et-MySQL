@@ -12,8 +12,7 @@
 
 <body class="align">
     <?php if (isset($_SESSION['email'])) {
-        echo "Vous etes connecté en tant que :" . $_SESSION['email'];
-        echo "<p><a href='deconnexion.php'>Deconnexion</a></p>";
+        header("location: card.php");
     } else {
     ?>
 
