@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,37 +11,45 @@
 </head>
 
 <body class="align">
+    <?php if (isset($_SESSION['email'])) {
+        echo "Vous etes connecté en tant que :" . $_SESSION['email'];
+        echo "<p><a href='deconnexion.php'>Deconnexion</a></p>";
+    } else {
+    ?>
 
-    <div class="grid">
+        <div class="grid">
 
-        <form action="login.php" method="POST" class="form login">
+            <form action="login.php" method="POST" class="form login">
 
-            <header class="login__header">
-                <h3 class="login__title">Login</h3>
-            </header>
+                <header class="login__header">
+                    <h3 class="login__title">Login</h3>
+                </header>
 
-            <div class="login__body">
+                <div class="login__body">
 
-                <div class="form__field">
-                    <input type="email" name="email" placeholder="Email" required>
+                    <div class="form__field">
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+
+                    <div class="form__field">
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+
                 </div>
 
-                <div class="form__field">
-                    <input type="password" name="password" placeholder="Password" required>
-                </div>
+                <footer class="login__footer">
+                    <input type="submit" value="Login" name="submit">
 
-            </div>
+                    <p><span class="icon icon--info">?</span><a href="#">Forgot Password</a></p>
+                </footer>
 
-            <footer class="login__footer">
-                <input type="submit" value="Login" name="submit">
+            </form>
 
-                <p><span class="icon icon--info">?</span><a href="#">Forgot Password</a></p>
-            </footer>
-
-        </form>
-
-    </div>
-
+        </div>
+    <?php
+    }
+    ?>
 </body>
+
 
 </html>
